@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleCalculator {
+    enum Operation { Add, Subtract, Multiply, Divide }
+
+    function calculate(uint num1, uint num2, Operation op) public pure returns (uint) {
+        if (op == Operation.Add) {
+            return num1 + num2;
+        } else if (op == Operation.Subtract) {
+            return num1 - num2;
+        } else if (op == Operation.Multiply) {
+            return num1 * num2;
+        } else if (op == Operation.Divide) {
+            require(num2 > 0, "Division by zero");
+            return num1 / num2;
+        } else {
+            revert("Invalid operation");
+        }
+    }
+}
